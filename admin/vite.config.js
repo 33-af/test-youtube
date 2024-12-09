@@ -5,10 +5,10 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ["react-router-dom"], // Указываем react-router-dom как внешнюю зависимость
+      external: ["react-router-dom", "axios"], // Объединяем зависимости в один массив
     },
   },
   server: {
-    port: 5173, // Порт для локального сервера
+    port: 5174, // Порт для локального сервера
   },
 });

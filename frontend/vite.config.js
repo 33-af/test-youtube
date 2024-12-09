@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ["react-router-dom"], // Указываем react-router-dom как внешнюю зависимость
+      external: ["react-router-dom", "axios"], // Объединяем зависимости в один массив
     },
   },
   server: {
