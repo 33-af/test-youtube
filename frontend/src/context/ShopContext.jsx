@@ -1,7 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
@@ -22,7 +19,7 @@ const ShopContextProvider = (props) => {
 
     const addToCart = async (itemId, size) => {
         if (!size) {
-            toast.error('Select Product Size');
+            console.error('Select Product Size');
             return;
         }
         let cartData = structuredClone(cartItems);
@@ -45,7 +42,7 @@ const ShopContextProvider = (props) => {
             try {
                 await axios.post(backendUrl + '/api/cart/add', { itemId, size }, { headers: { token } });
             } catch (e) {
-                toast.error(e.message); // Исправлено: используем e.message вместо error.message
+                console.error(e.message); // Исправлено: используем e.message вместо error.message
             }
         }
     }
@@ -59,7 +56,7 @@ const ShopContextProvider = (props) => {
                         totalCount += cartItems[items][item];
                     }
                 } catch (error) {
-                    toast.error(error.message)
+                    console.error(error.message)
                 }
             }
         }
@@ -74,7 +71,7 @@ const ShopContextProvider = (props) => {
             try {
                 await axios.post(backendUrl + '/api/cart/update', { itemId, size, quantity }, { headers: { token } });
             } catch (e) {
-                toast.error(e.message); // Исправлено: используем e.message вместо error.message
+                console.error(e.message); // Исправлено: используем e.message вместо error.message
             }
         }
     }
@@ -86,7 +83,7 @@ const ShopContextProvider = (props) => {
                 setCartItems(response.data.cartData)
             }
         } catch (e) {
-            toast.error(e.message)
+            console.error(e.message)
         }
     }
 
@@ -100,7 +97,7 @@ const ShopContextProvider = (props) => {
                         totalAmount += itemInfo.price * cartItems[items][item];
                     }
                 } catch (error) {
-                    toast.error(error.message)
+                    console.error(error.message)
                 }
             }
         }
@@ -115,10 +112,10 @@ const ShopContextProvider = (props) => {
                 setProducts(response.data.products);  // Set the products data
                 console.log('API Response:', response.data);  // Log the full response
             } else {
-                toast.error(response.data.message);
+                console.error(response.data.message);
             }
         } catch (e) {
-            toast.error(e.message);
+            console.error(e.message);
             console.error('API Error:', e);  // Log the error to the console
         }
     };
