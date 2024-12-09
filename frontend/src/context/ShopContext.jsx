@@ -1,8 +1,9 @@
 
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
 import { createContext, useEffect, useState } from "react";
-import axios from 'axios'
+import axios from "axios"
+
 export const backendUrl = 'http://localhost:4000';
 
 export const ShopContext = createContext();
