@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom'
+
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 export const backendUrl = 'http://localhost:4000';
 
@@ -107,7 +108,7 @@ const ShopContextProvider = (props) => {
     const getProductsData = async () => {
         try {
             const response = await axios.get(`${backendUrl}/api/product/list`);
-           
+
             if (response.data.success) {
                 setProducts(response.data.products);  // Set the products data
                 console.log('API Response:', response.data);  // Log the full response
@@ -133,7 +134,7 @@ const ShopContextProvider = (props) => {
     }, [])
 
 
-    
+
 
 
 
