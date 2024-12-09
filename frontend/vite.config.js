@@ -1,14 +1,8 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
+// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  build: {
-    rollupOptions: {
-      external: ["react-router-dom", "axios"], // Объединяем зависимости в один массив
-    },
-  },
-  server: {
-    port: 5173, // Порт для локального сервера
-  },
-});
+  server:{port:5173}
+})
